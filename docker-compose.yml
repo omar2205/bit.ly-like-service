@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - '4000:4000'
+    expose:
+      - 4000
+    volumes:
+      - './backend:/usr/src/app'
+    depends_on:
+      - 'redis'
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - HOST=0.0.0.0
+      - ENV=prod
+      - PORT=4000
+    restart: always
+
+  redis:
+    image: redislabs/redisearch
+    restart: always
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:

@@ -1,6 +1,7 @@
 import os
 from bottle import Bottle
-from dotenv import load_dotenv; load_dotenv()
+if os.environ.get('ENV') != 'prod':
+  from dotenv import load_dotenv; load_dotenv()
 
 from api import v1
 

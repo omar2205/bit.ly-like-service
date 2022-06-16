@@ -1,3 +1,4 @@
+import os
 from bottle import Bottle, response, request
 from services.URLShortenerService import URLShortenerService
 
@@ -5,7 +6,10 @@ v1 = Bottle()
 
 @v1.route('/healthcheck')
 def healthcheck():
-    return 'OK'
+    return {
+      'status':'OK', 
+      'env': os.environ.get('ENV')
+    }
 
 @v1.route('/create', method='POST')
 def url_shortener():
@@ -26,16 +30,21 @@ def url_shortener():
     return { 'code': 500, 'error': 'Internal Server Error' }
 
 
-@v1.route('/<uid:re:[a-zA-Z0-9_]{6}>')
+@v1.route('/get/<uid:re:[a-zA-Z0-9_]{6}>')
 def redirect_to_url(uid):
   url = URLShortenerService().get_url(uid)
+
   if url:
     return { 
       'code': 200, 'error': False, 
       'data': {
-        'url': url.decode('utf-8')
+        'url': url
       }
     }
+  response.status = 404
+  return {
+    'code': 404, 'error': 'Not Found',
+  }
 
 
 @v1.route('/alpha')
