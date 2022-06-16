@@ -1,7 +1,10 @@
+from http.client import CONTINUE
 import os
 from bottle import Bottle
 if os.environ.get('ENV') != 'prod':
   from dotenv import load_dotenv; load_dotenv()
+
+CONTACT_URL = os.environ.get('CONTACT_URL', 'oskr.nl')
 
 from api import v1
 
@@ -10,6 +13,13 @@ PORT = int(os.getenv('PORT', 4000))
 ENV = os.getenv('ENV', 'dev')
 
 main_app = Bottle()
+
+@main_app.route('/')
+def home():
+  return {
+    'code': 200,
+    'message': f'Visit {CONTACT_URL} for more information'
+  }
 
 if __name__ == '__main__':
   is_dev = ENV == 'dev'
