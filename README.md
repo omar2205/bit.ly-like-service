@@ -25,9 +25,9 @@ Response:
 { "code": 200, "error": {}, "data": {} }
 ```
 
-| route                        | description       |
-| ---------------------------- | ----------------- |
-| /api/v1                      |                   |
-| GET /healthcheck             | Check the service |
-| GET /:uid:re:[a-zA-Z0-9_]{6} | Get the real URL  |
-| POST /create                 | Create a URL      |
+| route                            | description       |
+| -------------------------------- | ----------------- |
+| /api/v1                          |                   |
+| GET /healthcheck                 | Check the service |
+| GET /get/:uid:re:[a-zA-Z0-9_]{6} | Get the real URL  |
+| POST /create                     | Create a URL      |
