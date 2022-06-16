@@ -7,6 +7,7 @@ if os.environ.get('ENV') != 'prod':
 CONTACT_URL = os.environ.get('CONTACT_URL', 'oskr.nl')
 
 from api import v1
+from api_redirect import r
 
 HOST = os.getenv('HOST', 'localhost')
 PORT = int(os.getenv('PORT', 4000))
@@ -25,6 +26,7 @@ if __name__ == '__main__':
   is_dev = ENV == 'dev'
 
   main_app.mount('/api/v1/', v1)
+  main_app.mount('/r/', r)
 
   main_app.run(
     host=HOST, 

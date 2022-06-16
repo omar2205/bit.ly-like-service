@@ -31,3 +31,5 @@ Response:
 | GET /healthcheck                 | Check the service |
 | GET /get/:uid:re:[a-zA-Z0-9_]{6} | Get the real URL  |
 | POST /create                     | Create a URL      |
+| /r                               |                   |
+| GET /r/:uid                      | Redirect to URL   |
