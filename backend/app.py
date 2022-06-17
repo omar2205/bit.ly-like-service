@@ -30,6 +30,8 @@ if __name__ == '__main__':
   main_app.mount('/r/', r)
 
   main_app.install(enable_cors())
+  v1.install(enable_cors())
+  r.install(enable_cors())
 
   main_app.run(
     host=HOST, 
