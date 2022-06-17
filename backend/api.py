@@ -11,7 +11,7 @@ def healthcheck():
       'env': os.environ.get('ENV')
     }
 
-@v1.route('/create', method='POST')
+@v1.route('/create', method=['POST', 'OPTIONS'])
 def url_shortener():
     url = request.json.get('url', None)
     expires = request.json.get('expires', None)

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { ShortenURL } from '$lib/URLShortnerService'
+  import { variables } from '../variables'
 
   let res = 'Loading...'
   let err: string = ''
@@ -15,9 +16,9 @@
     await import('@material/mwc-linear-progress')
     res = 'Loaded'
 
-    fetch('https://omar2205-bit-ly-like-service-w9qrg5r2g6pj-4000.githubpreview.dev/')
-    .then(a => a.json())
-    .then(a => r = a)
+    fetch(variables.BACKEND_API_URL)
+      .then(a => a.json())
+      .then(a => (r = a))
   })
 
   const generate_url = async (e: any) => {
@@ -62,7 +63,7 @@
 {/if}
 
 {#if r}
-{JSON.stringify(r)}
+  {JSON.stringify(r)}
 {/if}
 
 <style>
