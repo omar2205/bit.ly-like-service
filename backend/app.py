@@ -8,6 +8,7 @@ CONTACT_URL = os.environ.get('CONTACT_URL', 'oskr.nl')
 
 from api import v1
 from api_redirect import r
+from enable_cors import enable_cors
 
 HOST = os.getenv('HOST', 'localhost')
 PORT = int(os.getenv('PORT', 4000))
@@ -27,6 +28,8 @@ if __name__ == '__main__':
 
   main_app.mount('/api/v1/', v1)
   main_app.mount('/r/', r)
+
+  main_app.install(enable_cors())
 
   main_app.run(
     host=HOST, 
