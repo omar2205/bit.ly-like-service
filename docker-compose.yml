@@ -18,6 +18,16 @@ services:
       - PORT=4000
     restart: always
 
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # Inject backend URL into frontend's Dockerfile
+        VITE_BACKEND_API_URL: https://omar2205-bit-ly-like-service-w9qrg5r2g6pj-4000.githubpreview.dev/
+    ports:
+      - '5000:80'
+    restart: always
+
   redis:
     image: redislabs/redisearch
     restart: always
