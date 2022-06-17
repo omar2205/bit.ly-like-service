@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-color: #fff;
+  --text-color: #222;
+  --error-color: hsl(0deg 100% 60%);
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Archivo Narrow', sans-serif;
+
+  background-color: var(--bg-color);
+  color: var(--text-color)
+}
+
+
+h1, h2, h3, h4, h5, h6,
+.title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: normal;
+}
+
+body.dark {
+  --bg-color: #111;
+  --text-color: #fff;
+  --error-color: hsl(0deg 100% 70%);
+
+  --mdc-theme-primary: hsl(0deg 0% 80%);
+
+  --custom-text-field-outline-color: hsl(0deg 0% 50%);
+  --mdc-text-field-outlined-idle-border-color: var(--custom-text-field-outline-color);
+  --mdc-text-field-label-ink-color: var(--custom-text-field-outline-color);
+  --mdc-notched-outline-border-color: var(--custom-text-field-outline-color);
+
+  --mdc-text-field-ink-color: hsl(0deg 0% 50%);
+
+  /* disabled */
+  --custom-text-field-outline-color-disabled: hsl(0deg 0% 25%);
+  --mdc-text-field-outlined-disabled-border-color: var(--custom-text-field-outline-color-disabled);
+  --mdc-text-field-label-ink-color: var(--custom-text-field-outline-color-disabled);
+  --mdc-text-field-disabled-ink-color: hsl(0deg 0% 25%);
+}
